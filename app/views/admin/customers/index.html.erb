@@ -25,7 +25,7 @@
             </td>
             <td ><%= customers.email %></td>
             <td >
-              <% if customers.is_deleted %>
+              <% if customers.is_active %>
                 <p class="text-success"><strong>有効</strong></p>
               <% else %>
                 <p class="text-danger"><strong>退会</strong></p>
