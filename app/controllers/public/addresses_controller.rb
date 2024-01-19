@@ -5,6 +5,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
   end
 
   def create
@@ -17,7 +18,7 @@ class Public::AddressesController < ApplicationController
       render :index
     end
   end
-  
+
   def update
     @address = Address.find(params[:id])
     @address.customer_id = current_customer.id
@@ -39,5 +40,5 @@ class Public::AddressesController < ApplicationController
   def address_params
     params.require(:address).permit(:name, :post_code, :address, :customer_id)
   end
-  
+
 end
