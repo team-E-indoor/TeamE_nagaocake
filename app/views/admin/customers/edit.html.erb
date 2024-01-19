@@ -1,5 +1,5 @@
 <div class="container">
-  <h4 class="title"><strong><%= @customer.full_name %>さんの会員情報編集</strong></h4>
+  <h4 class="title"><strong><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</strong></h4>
   <div class="row">
     <div class="col-10">
       <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
@@ -31,7 +31,7 @@
         <div class="field row">
           <label for="inputPostal_code" class="col-3 col-form-label">郵便番号</label>
           <div class="col-3">
-            <%= f.text_field :postal_code, class:"form_control", id:'inputPostal_code' %>
+            <%= f.text_field :post_code, class:"form_control", id:'inputPostal_code' %>
           </div>
         </div>
 
@@ -45,7 +45,7 @@
         <div class="field row">
           <label for="inputTelephone_number" class="col-3 col-form-label">電話番号</label>
           <div class="col-3">
-            <%= f.text_field :telephone_number, class:"form_control", id:'inputTelephone_number' %>
+            <%= f.text_field :phone_number, class:"form_control", id:'inputTelephone_number' %>
           </div>
         </div>
 
