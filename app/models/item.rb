@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_many :order_details
   # belongs_to :genre
   has_one_attached :image
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -11,11 +11,12 @@ class Item < ApplicationRecord
     end
     image
   end
-  
+
   def with_tax_price
     (price * 1.1).floor
   end
-  
+
+
   validates :name, presence: true
   validates :item_description, presence: true
   validates :price, presence: true
