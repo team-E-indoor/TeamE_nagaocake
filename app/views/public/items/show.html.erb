@@ -1,12 +1,19 @@
-<%= image_tag @item.get_image(300,300) %>
+<div class ="container">
+  <div class ="row p-5">
+    <div class = "col-lg-8">
+      <%= image_tag @item.get_image(500,500) %>
+    </div>
 
-<h4><%= @item.name %></h4>
-<h5><%= @item.item_description %></h5>
-<h5>¥<%= @item.with_tax_price %>(税込)</h5>
+    <div class = "col-lg-4">
+      <h4><strong><%= @item.name %></strong></h4>
+        <h5><%= @item.item_description %></h5>
+      <h5><strong>¥<%= @item.with_tax_price %></strong>(税込)</h5>
 
-
-<%= form_with model: @cart_item, url:cart_items_path, method: :post, local: true do |f| %>
-  <%= f.hidden_field :item_id, value: @item.id  %>
-  <%= f.select :amount, *[1..9], { prompt: '個数選択' }, required: true %>
-  <%= f.submit 'カートに入れる' %>
-<% end %>
+      <%= form_with model: @cart_item, url:cart_items_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id  %>
+        <%= f.select :amount, *[1..9], { prompt: '個数選択' }, required: true %>
+        <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
