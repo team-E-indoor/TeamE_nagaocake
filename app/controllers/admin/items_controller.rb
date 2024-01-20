@@ -5,8 +5,7 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    # rails active_storage:installのコマンドした。ジャンル作ったら@item.genre_id = 1消す
-    @item.genre_id = 1
+    # ジャンル作ったので@item.genre_id = 1消した
     if @item.save
       redirect_to admin_item_path(@item.id)
     else
