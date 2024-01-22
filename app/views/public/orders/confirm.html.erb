@@ -27,15 +27,15 @@
       <table class="table">
         <tr>
           <td>送料</td>
-          <td><%= @shipping_fee %></td>
+          <td><%= @order.shipping_cost %></td>
         </tr>
         <tr>
           <td>商品合計</td>
-          <td><%= @cart_items_price %></td>
+          <td><%= @total %></td>
         </tr>
         <tr>
           <td>請求額</td>
-          <td><%= @total_price %></td>
+          <td><%= @order.total_price %></td>
         </tr>
       </table>
     </div>
@@ -49,7 +49,7 @@
     <% end %>
 
     <h4>お届け先</h4>
-    <%= @selected_address %>
+    <%= @public_address %>
 
     <%= form_with url: orders_path, method: :post do %>
 
