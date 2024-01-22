@@ -1,5 +1,5 @@
 <div style="center center no-repeat; text-align: center; padding: 20px;">
-  <div class="background-image">
+  <div class="background-image" style="padding: 45px;">
     <h4 class="font-weight-bold">ようこそ、ながのCAKEへ！</h4>
     <h5 class="font-weight-bold">
     このサイトは、ケーキ販売のECサイトになります。<br>
@@ -9,15 +9,15 @@
   </div>
 </div>
 
-<div class="d-flex flex-row mb-5">
+<div class="d-flex flex-row">
   <div class="p-5">
-    <h2><strong>新着商品</strong></h2>
+    <h2 class="text-danger"><strong>〜新着商品〜</strong></h2>
   </div>
 </div>
 <div class="new-items" style="display: flex; justify-content: space-around; padding: 0 100px;">
   <% @items.each do |item| %>
     <div style="padding: 10px; background-color: #ffffff; flex: 1; margin: 10px;">
-      <img style="width: 100%; height: auto; object-fit: contain; margin-bottom: 10px;" src="<%= url_for(item.image) %>">
+      <img style="width: 100%; height: auto; object-fit: contain; margin-bottom: 10px;"><%= link_to (image_tag item.get_image(270,270)), item_path(item.id) %>
       <h5 style="margin: 0; padding: 0;"><%= item.name %></h5>
       <p style="margin: 0; padding: 0;">¥<%= number_with_delimiter(item.price) %></p>
     </div>
