@@ -5,7 +5,7 @@ class Order < ApplicationRecord
 
   with_options presence: do
     validates :payment_method
-    validates :total_payment
+    validates :total_price
     validates :shipping_cost
     validates :postal_code
     validates :address
@@ -17,8 +17,8 @@ class Order < ApplicationRecord
   # 入金待ち0, 入金確認1, 製作中2, 発送準備中3, 発送済み4
   enum status: {wait_for_payment: 0, payment_confirmation: 1, in_making: 2, preparing_delivery: 3, delivered: 4}
 
-  def postal_code_and_address_and_name
-    "〒#{self.postal_code} #{self.address}\n#{self.name}"
+  def post_code_and_address_and_name
+    "〒#{self.post_code} #{self.address}\n#{self.name}"
   end
 
   def add_tax_price
@@ -29,8 +29,8 @@ class Order < ApplicationRecord
     self.add_tax_price * self.amount
   end
 
-  def total_paymen_sum
-    self.total_payment + self.shipping_cost
+  def total_price_sum
+    self.total_price + self.shipping_cost
   end
 
   def total_item_amount #合計金額

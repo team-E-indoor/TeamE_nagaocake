@@ -21,7 +21,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.all.page(params[:page]).per(10)
+    @orders =  current_customer.orders.all.page(params[:page]).per(10)
   end
 
   def show
@@ -39,7 +39,7 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @total = 0
     @order.shipping_cost = 800
-    @order.total_payment = params[:order][:payment_method].to_i
+    @order.total_price = params[:order][:payment_price].to_i
 
     if params[:order][:select_address] == "0"
       @order.post_code = current_customer.post_code
