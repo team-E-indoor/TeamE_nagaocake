@@ -7,7 +7,7 @@ class Order < ApplicationRecord
     validates :payment_method
     validates :total_price
     validates :shipping_cost
-    validates :postal_code
+    validates :post_code
     validates :address
     validates :name
     validates :status
