@@ -13,8 +13,8 @@ class Public::OrdersController < ApplicationController
       @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item_id
       @order_detail.amount = cart_item.amount
-      @order_detail.price = cart_item.item.add_tax_price
-      @order_detail.save
+      @order_detail.price = cart_item.item.with_tax_price
+
     end
     current_customer.cart_items.destroy_all
     redirect_to thanks_orders_path
