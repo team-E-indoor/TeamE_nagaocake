@@ -1,10 +1,10 @@
 class Admin::OrdersController < ApplicationController
   def show
-    @order = Order.find(params[:id])
-    @order_status = @order.statusｃ
-    @order_details = OrderDetail.where(order_id: params[:id])
+     @order = Order.find(params[:id])
+    # @order_status = @order.statusｃ
+    # @order_details = OrderDetail.where(order_id: params[:id])
   end
-  
+
   def update
     @order = Order.find(params[:id])
     @order_details = @order.order_details
@@ -19,7 +19,7 @@ class Admin::OrdersController < ApplicationController
     end
     　redirect_to admin_order_path(order.id), notice: "変更を完了しました"
   end
-  
+
   private
 
   def order_params
