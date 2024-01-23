@@ -19,6 +19,10 @@
           <td><%= cart_item.amount %></td>
           <td><%= cart_item.subtotal %></td>
         </tr>
+          <% @total += cart_item.subtotal %>
+          <%# @total = @total + cart_item.subtotal %>
+          
+          <%# @total = @total + cart_item.amount*cart_item.item.price %>
         <% end %>
       </table>
     </div>
@@ -31,11 +35,12 @@
         </tr>
         <tr>
           <td>商品合計</td>
-          <td><%= @total.round.to_s(:delimited) %></td>
+          <td><%= @total %></td>
+          
         </tr>
         <tr>
           <td>請求額</td>
-          <td><%= @order.total_price %></td>
+          <td></td>
         </tr>
       </table>
     </div>
