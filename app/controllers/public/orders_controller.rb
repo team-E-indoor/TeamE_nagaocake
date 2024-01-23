@@ -14,6 +14,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.item_id = cart_item.item_id
       @order_detail.quantity = cart_item.amount
       @order_detail.price = cart_item.item.with_tax_price
+      @order_detail.save
 
     end
     current_customer.cart_items.destroy_all
