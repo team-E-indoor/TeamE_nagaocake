@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
+    @order.save!
 
     current_customer.cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
@@ -14,7 +14,8 @@ class Public::OrdersController < ApplicationController
       @order_detail.item_id = cart_item.item_id
       @order_detail.quantity = cart_item.amount
       @order_detail.price = cart_item.item.with_tax_price
-      @order_detail.save
+      @order_detail.making_status = "waiting_manufacture"
+      @order_detail.save!
 
     end
     current_customer.cart_items.destroy_all
@@ -35,12 +36,14 @@ class Public::OrdersController < ApplicationController
 
   def confirm
 
-    @order = Order.new(order_params)
+    @order = Order.new
     @cart_items = current_customer.cart_items
     @order.customer_id = current_customer.id
     @total = 0
     @order.shipping_cost = 800
     @order.total_price = params[:order][:payment_price].to_i
+    @order.payment_method = params[:order][:payment_method]
+    @order.status = "wait_for_payment"
 
     if params[:order][:select_address] == "0"
       @order.post_code = current_customer.post_code
@@ -66,6 +69,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :post_code, :address, :payment_method, :total_price, :shipping_cost)
+    params.require(:order).permit(:name, :post_code, :address, :payment_method, :total_price, :shipping_cost, :customer_id, :status, :select_address)
   end
 end
