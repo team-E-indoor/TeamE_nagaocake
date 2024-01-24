@@ -28,9 +28,9 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = @order.order_details.all
-    @order_details = @order.order_details.all
-    @total_item_amount = @order_details.sum { |order_detail| order_detail.subtotal }
+
+    @order_details = @order.order_details
+    @total_item_amount = @order_details.inject(0) { |sum, order_detail| sum + order_detail.subtotal }
     @order = Order.find(params[:id])
   end
 

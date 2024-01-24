@@ -25,9 +25,6 @@ class Order < ApplicationRecord
     (self.price * 1.10).round
   end
 
-  def subtotal # 小計
-    self.add_tax_price * self.amount
-  end
 
   def total_price_sum
     self.total_price + self.shipping_cost
