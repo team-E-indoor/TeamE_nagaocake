@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save!
+    @order.save
 
     current_customer.cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.quantity = cart_item.amount
       @order_detail.price = cart_item.item.with_tax_price
       @order_detail.making_status = "waiting_manufacture"
-      @order_detail.save!
+      @order_detail.save
 
     end
     current_customer.cart_items.destroy_all
