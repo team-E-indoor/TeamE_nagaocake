@@ -15,11 +15,9 @@
     <header class="border border-dark pt-4 pb-4">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand" href="/">
-            <span>
-              <h4 class="font-weight-bold font-italic">Nagano Cake</h4>
-            </span>
-          </a>
+          <h4>
+          <%= link_to "Nagano Cake", root_path, class:"font-weight-bold font-italic" %>
+          </h4>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
