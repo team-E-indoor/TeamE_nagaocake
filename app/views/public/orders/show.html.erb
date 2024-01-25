@@ -36,7 +36,7 @@
       <table class="mt-4 table table-bordered">
         <tr>
           <th class="table-secondary">商品合計</th>
-          <td><%= @order.total_price %></td>
+          <td><%= @order.total_price - @order.shipping_cost %></td>
         </tr>
         <tr>
           <th class="table-secondary">配送料</th>
