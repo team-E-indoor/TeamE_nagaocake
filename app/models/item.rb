@@ -16,6 +16,9 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
+  def total_item_amount
+    order_details.sum{ |order_detail| order_detail.subtotal }
+  end
 
   validates :name, presence: true
   validates :item_description, presence: true
