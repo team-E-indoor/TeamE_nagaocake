@@ -9,10 +9,14 @@
         <h5><%= @item.item_description %></h5>
       <h5><strong>¥<%= @item.with_tax_price %></strong>(税込)</h5>
 
-      <%= form_with model: @cart_item, url:cart_items_path, method: :post, local: true do |f| %>
+      <% if customer_signed_in? %>
+        <%= form_with model: @cart_item, url:cart_items_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :item_id, value: @item.id  %>
         <%= f.select :amount, *[1..9], { prompt: '個数選択' }, required: true %>
         <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+        <% end %>
+      <% else %>
+        ログインすると注文機能が使えます。
       <% end %>
     </div>
   </div>
