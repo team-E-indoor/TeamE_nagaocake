@@ -23,4 +23,5 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :item_description, presence: true
   validates :price, presence: true
+  validates :image, presence: true
 end
