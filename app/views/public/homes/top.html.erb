@@ -17,7 +17,8 @@
 <div class="new-items" style="display: flex; justify-content: space-around; padding: 0 100px;">
   <% @items.each do |item| %>
     <div style="padding: 10px; background-color: #ffffff; flex: 1; margin: 10px;">
-      <img style="width: 100%; height: auto; object-fit: contain; margin-bottom: 10px;"><%= link_to (image_tag item.get_image(270,270)), item_path(item.id) %>
+      <img style="width: 100%; height: auto; object-fit: contain; margin-bottom: 10px;">
+      <%= link_to (image_tag item.get_image(270,270)), item_path(item.id) %>
       <h5 style="margin: 0; padding: 0;"><%= item.name %></h5>
       <p style="margin: 0; padding: 0;">¥<%= number_with_delimiter(item.price) %></p>
     </div>
